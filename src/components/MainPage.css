@@ -1,0 +1,18 @@
+/* Ensure the body and html fill the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Flex container to make the content take up available space */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Ensure footer stays at the bottom */
+  .footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+  }
+  
