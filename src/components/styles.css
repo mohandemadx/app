@@ -16,3 +16,8 @@ html, body {
     margin-top: auto; /* Pushes footer to the bottom */
   }
   
+  .custom-divider {
+    border-top: 2px solid #ddd;
+    margin: 20px 0;
+    width: 100%;
+  }

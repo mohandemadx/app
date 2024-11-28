@@ -10,19 +10,24 @@ export default function App() {
 
   return (
     <header>
-     {/* Header */}
-     <Header />
+      {/* Header */}
+      <Header />
 
       <div
-        className='p-5 text-center bg-image'
-        style={{ backgroundImage: "url('https://mdbootstrap.com/img/new/slides/041.webp')", height: '400px' }}
+        className="p-5 text-center bg-image"
+        style={{
+          backgroundImage: "url('/assets/homepage.gif')", // Correct path for the public folder
+          height: '400px',
+          backgroundSize: 'cover', // Ensures the GIF covers the div properly
+          backgroundPosition: 'center', // Centers the GIF
+        }}
       >
-        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-          <div className='d-flex justify-content-center align-items-center h-100'>
-            <div className='text-white'>
-              <h1 className='mb-3'>BLACK FRIDAY OFFERS</h1>
-              <h4 className='mb-3'>50% discount</h4> 
-              <MDBBtn tag="a" href="/product:product-name" outline size="lg">
+        <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="text-white">
+              <h1 className="mb-3">BLACK FRIDAY OFFERS</h1>
+              <h4 className="mb-3">50% discount</h4>
+              <MDBBtn tag="a" href="/product/personal-computers/2" outline size="lg">
                 Buy Now
               </MDBBtn>
             </div>
@@ -31,8 +36,7 @@ export default function App() {
       </div>
 
       {/* Footer */}
-     <Footer />
-
+      <Footer />
     </header>
   );
 }

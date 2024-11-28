@@ -1,42 +1,64 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'; // For dynamic routing based on category
-import { categories } from '../data/products.js'; // Import categories data
+import { useParams } from 'react-router-dom';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn } from 'mdb-react-ui-kit';
+import { categories } from '../data/products.js'; // Assuming the categories data is in a file called products.js
+import Header from './Header';
+import Footer from './Footer';
 
-export default function ProductPage() {
-  const { categoryName } = useParams(); // Extract category name from URL
-  const category = categories.find(cat => cat.name.toLowerCase().replace(" ", "-") === categoryName);
+export default function ProductsPage() {
+  const { category } = useParams(); // Get category from URL parameters
 
-  if (!category) {
-    return <h2>Category not found</h2>; // Display an error if category is not found
+  // Find the category based on the parameter
+  const selectedCategory = categories.find(
+    (cat) => cat.name.toLowerCase().replace(' ', '-') === category
+  );
+
+  if (!selectedCategory) {
+    return (
+      <div>
+        <Header />
+        <MDBContainer className="my-5 text-center">
+          <h2>Category Not Found</h2>
+        </MDBContainer>
+        <Footer />
+      </div>
+    );
   }
 
   return (
     <div>
-      <header>
-        <h1>{category.name} - Products</h1>
-      </header>
+      {/* Header */}
+      <Header />
 
-      <div className="container">
-        <div className="row">
-          {category.products.map(product => (
-            <div key={product.id} className="col-md-4 mb-4">
-              <div className="card">
-                <img src={product.image} alt={product.name} className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">Specs: {product.specs}</p>
-                  <p className="card-text">Price: {product.price}</p>
-                  <button className="btn btn-primary">Add to Cart</button>
-                </div>
-              </div>
-            </div>
+      {/* Products Section */}
+      <MDBContainer className="my-5">
+        <h2 className="text-center mb-5">{selectedCategory.name} Products</h2>
+
+        <MDBRow>
+          {selectedCategory.products.map((product) => (
+            <MDBCol key={product.id} md="4" className="mb-4">
+              <MDBCard className="h-100">
+                <MDBCardImage src={product.image} alt={product.name} position="top" />
+                <MDBCardBody>
+                  <MDBCardTitle>{product.name}</MDBCardTitle>
+                  <MDBCardText>{product.specs}</MDBCardText>
+                  <MDBCardText className="font-weight-bold">{product.price}</MDBCardText>
+                  <MDBBtn
+                    tag="a"
+                    href={`/product/${category}/${product.id}`}
+                    color="primary"
+                  >
+                    View Product
+                  </MDBBtn>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
           ))}
-        </div>
-      </div>
+        </MDBRow>
+      </MDBContainer>
 
-      <footer>
-        <p>Footer Content</p>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

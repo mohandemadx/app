@@ -22,12 +22,12 @@ function Header() {
           {/* Logo and Name on the Left */}
           <MDBNavbarBrand href="/" className="d-flex align-items-center">
             <img
-              src="https://via.placeholder.com/50"
+              src='/assets/logo.png'
               alt="Logo"
               height="40"
               className="me-2"
             />
-            <strong>Shopping Heaven</strong>
+            <strong>ZAK Store</strong>
           </MDBNavbarBrand>
 
           {/* Right Side Navigation (Tabs, Search and Cart) */}
@@ -37,7 +37,10 @@ function Header() {
               <MDBNavbarLink href="/home">Home</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href="/category">Categories</MDBNavbarLink>
+              <MDBNavbarLink href="/product">Categories</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/all-products">ShopNOW</MDBNavbarLink>
             </MDBNavbarItem>
 
             {/* Search Bar */}
