@@ -46,7 +46,7 @@ export default function ViewProductPage() {
             <h2>{product.name}</h2>
             <p>{product.specs}</p>
             <h4 className="text-primary">{product.price}</h4>
-            <MDBBtn tag="a" href="/product/" color="primary" className="mt-3">
+            <MDBBtn tag="a" href="/product" color="primary" className="mt-3">
               Back to Products
             </MDBBtn>
           </MDBCol>
